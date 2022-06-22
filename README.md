@@ -27,5 +27,6 @@ The task is to produce an easy to use, reliable and well designed python module 
      * An interpolated grid of points with interpolated elevation information
      * An option to visualize the output grid as a 3D render or heatmap to visually compare to the original, un-interpolated elevation data.
 
+## Source
 
-
+The data can be found at amazon s3 bucket in https://s3-us-west-2.amazonaws.com/usgs-lidar-public.
