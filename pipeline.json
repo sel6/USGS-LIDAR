@@ -1,0 +1,27 @@
+{
+    "pipeline": [
+        {
+            "bounds": "([-10425171.940, -10425161.940], [5164494.710, 5164500.710])",
+            "filename": "https://s3-us-west-2.amazonaws.com/usgs-lidar-public/IA_FullState/ept.json",
+            "type": "readers.ept",
+            "tag": "readdata"
+        },
+        {
+            "limits": "Classification![7:7]",
+            "type": "filters.range",
+            "tag": "nonoise"
+        },
+        {
+            "in_srs": "EPSG:3857",
+            "out_srs": "EPSG:4326",
+            "tag": "reprojectUTM",
+            "type": "filters.reprojection"
+        },
+
+        {
+            "filename": "iowa.csv",
+            "tag": "writerslas",
+            "type": "writers.text"
+        }
+    ]
+}
