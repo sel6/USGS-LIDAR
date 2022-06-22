@@ -2,7 +2,8 @@
 ## Project Objective
 The task is to produce an easy to use, reliable and well designed python module that domain experts and data scientists can use to fetch, visualize, and transform publicly available satellite and LIDAR data. In particular, the code should interface with USGS 3DEP and fetch data using their API. 
 
-##Schedule
+## Schedule
+
 * Create Github repo
 * Create project, issues, Readme.md and structure folders
 * Understand key concepts of Data Engineering, LIDAR, geopandas, pdal… etc.
