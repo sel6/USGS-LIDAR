@@ -1,4 +1,4 @@
-import os
+import matplotlib.image as mp
 import urllib3
 import json
 import re
