@@ -2,7 +2,12 @@
 ## Project Objective
 The task is to produce an easy to use, reliable and well designed python module that domain experts and data scientists can use to fetch, visualize, and transform publicly available satellite and LIDAR data. In particular, the code should interface with USGS 3DEP and fetch data using their API. 
 
-## Schedule
+
+## Data
+
+The data can be found at amazon s3 bucket in https://s3-us-west-2.amazonaws.com/usgs-lidar-public.
+
+## Tasks
 
 * Create Github repo
 * Create project, issues, Readme.md and structure folders
@@ -27,6 +32,3 @@ The task is to produce an easy to use, reliable and well designed python module 
      * An interpolated grid of points with interpolated elevation information
      * An option to visualize the output grid as a 3D render or heatmap to visually compare to the original, un-interpolated elevation data.
 
-## Source
-
-The data can be found at amazon s3 bucket in https://s3-us-west-2.amazonaws.com/usgs-lidar-public.
