@@ -187,9 +187,30 @@ class UsgsLidar:
 
         return(region_dicto)
     
+        def save_heatmap(self, df, png_path, title) -> None:
+            fig, ax = plt.subplots(1, 1, figsize=(12, 10))
+            df.plot(column='elevation', ax=ax, legend=True, cmap="terrain")
+            plt.title(title)
+            plt.xlabel('Longitude')
+            plt.ylabel('Latitude')
+            plt.savefig(png_path, dpi=120)
+            plt.axis('off')
+            plt.close()
+        
+        def load_heatmap(self, png_path):
+            fig, ax = plt.subplots(1, 1, figsize=(20, 18))
+            img = mp.imread(png_path)
+            imgplot = plt.imshow(img)
+            plt.axis('off')
+            plt.show() 
+    
 if __name__=="__main__":
     US = UsgsLidar()
     MINX, MINY, MAXX, MAXY = [-93.759055, 41.925015, -93.766155, 41.935015]
     polygon = Polygon(((MINX, MINY), (MINX, MAXY), (MAXX, MAXY), (MAXX, MINY), (MINX, MINY)))
+    heatmap_path = "../data/heatmap2.png"
     output = US.fetch_data(polygon)
+    terrain_view = US.plot_terrain(output, size=0.001)
+    saved = US.save_heatmap(output, heatmap_path, "Polygon boundary map")
+    loaded = US.load_heatmap(heatmap_path)
     print(output)
