@@ -187,22 +187,29 @@ class UsgsLidar:
 
         return(region_dicto)
     
-        def save_heatmap(self, df, png_path, title) -> None:
-            fig, ax = plt.subplots(1, 1, figsize=(12, 10))
-            df.plot(column='elevation', ax=ax, legend=True, cmap="terrain")
-            plt.title(title)
-            plt.xlabel('Longitude')
-            plt.ylabel('Latitude')
-            plt.savefig(png_path, dpi=120)
-            plt.axis('off')
-            plt.close()
+    def plot_terrain(self, gdf: gpd.GeoDataFrame, fig_size: tuple=(12, 10), size: float=0.01):
+       
+        fig, ax = plt.subplots(1, 1, figsize=fig_size)
+        ax = plt.axes(projection='3d')
+        ax.scatter(gdf.geometry.x, gdf.geometry.y, gdf.elevation, s=size)
+        plt.show()
+    
+    def save_heatmap(self, df, png_path, title) -> None:
+        fig, ax = plt.subplots(1, 1, figsize=(12, 10))
+        df.plot(column='elevation', ax=ax, legend=True, cmap="terrain")
+        plt.title(title)
+        plt.xlabel('Longitude')
+        plt.ylabel('Latitude')
+        plt.savefig(png_path, dpi=120)
+        plt.axis('off')
+        plt.close()
         
-        def load_heatmap(self, png_path):
-            fig, ax = plt.subplots(1, 1, figsize=(20, 18))
-            img = mp.imread(png_path)
-            imgplot = plt.imshow(img)
-            plt.axis('off')
-            plt.show() 
+    def load_heatmap(self, png_path):
+        fig, ax = plt.subplots(1, 1, figsize=(20, 18))
+        img = mp.imread(png_path)
+        imgplot = plt.imshow(img)
+        plt.axis('off')
+        plt.show() 
     
 if __name__=="__main__":
     US = UsgsLidar()
