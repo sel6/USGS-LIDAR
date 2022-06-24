@@ -205,7 +205,7 @@ class UsgsLidar:
         plt.close()
         
     def load_heatmap(self, png_path):
-        fig, ax = plt.subplots(1, 1, figsize=(20, 18))
+        fig, ax = plt.subplots(1, 1, figsize=(12, 10))
         img = mp.imread(png_path)
         imgplot = plt.imshow(img)
         plt.axis('off')
