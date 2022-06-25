@@ -34,3 +34,37 @@ time: 2022-06-25 04:44:30,781, function: fetch_regions, module: root, message: f
 
 time: 2022-06-25 04:44:50,207, function: load_heatmap, module: root, message: loaded hitmap successfully! 
 
+time: 2022-06-25 04:54:23,660, function: fetch_regions, module: root, message: fetched region successfully! 
+
+time: 2022-06-25 04:54:23,670, function: fetch_polygon_boundaries, module: root, message: successfully fetched polygon boundaries 
+
+time: 2022-06-25 04:54:23,671, function: fetch_pipeline, module: root, message: loaded pipe successfully! 
+
+time: 2022-06-25 04:55:49,355, function: execute_pipeline, module: root, message: pipeline executed successfully! 
+
+time: 2022-06-25 04:55:49,355, function: fetch_region_data, module: root, message: fetched region data successfully! 
+
+time: 2022-06-25 04:56:36,170, function: create_gpd_df, module: root, message: created geopandas dataframe successfully! 
+
+time: 2022-06-25 04:56:36,262, function: fetch_data, module: root, message: fetched data successfully 
+
+time: 2022-06-25 05:07:58,383, function: read_txt, module: root, message: read text file successfully! 
+
+time: 2022-06-25 05:07:58,455, function: read_json, module: root, message: read json file successfully! 
+
+time: 2022-06-25 05:07:58,606, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 05:08:20,875, function: fetch_regions, module: root, message: fetched region successfully! 
+
+time: 2022-06-25 05:08:20,919, function: fetch_polygon_boundaries, module: root, message: successfully fetched polygon boundaries 
+
+time: 2022-06-25 05:08:20,920, function: fetch_pipeline, module: root, message: loaded pipe successfully! 
+
+time: 2022-06-25 05:09:45,464, function: execute_pipeline, module: root, message: pipeline executed successfully! 
+
+time: 2022-06-25 05:09:45,464, function: fetch_region_data, module: root, message: fetched region data successfully! 
+
+time: 2022-06-25 05:10:31,633, function: create_gpd_df, module: root, message: created geopandas dataframe successfully! 
+
+time: 2022-06-25 05:10:31,728, function: fetch_data, module: root, message: fetched data successfully 
+
