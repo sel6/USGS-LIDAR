@@ -12,8 +12,21 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 
 class UsgsLidar:
+    """
+    A class that load, fetch, visualise, and transform publicly available LIDAR data on AWS.
+    """
     
     def __init__(self, path = "https://s3-us-west-2.amazonaws.com/usgs-lidar-public/", pipeline_json_path: str="../pipeline.json") -> None:
+        
+        """
+        Args:
+            path (str, optional): [url path location of the Lidar data]. Defaults to "https://s3-us-west-2.amazonaws.com/usgs-lidar-public/"
+            pipeline_json_path (str, optional): [the json file with the pipeline structure]. Defaults to "../pipeline.json".
+            
+        Returns:
+            [None]: [nonetype object].
+        """
+            
         
         logging.basicConfig(filename="../logs/keep_track.log", level=logging.INFO, format="time: %(asctime)s, function: %(funcName)s, module: %(name)s, message: %(message)s \n")
             
@@ -22,7 +35,14 @@ class UsgsLidar:
         self.a = self.read_json("../pipeline.json")
         self.metadata = self.read_csv("../data/metadata.csv")
     
-    def read_json(self, json_path):
+    def read_json(self, json_path: str):
+        """
+        A method to read a json file
+        
+        Args:
+            json_path (str): [the location of the json file].
+        """
+        
         try:
             with open(json_path) as js:
                 json_obj = json.load(js)
@@ -32,7 +52,16 @@ class UsgsLidar:
         except FileNotFoundError:
             logging.exception('File not found.')
         
-    def fetch_polygon_boundaries(self, polygon: Polygon):
+    def fetch_polygon_boundaries(self, polygon: Polygon) -> tuple:
+        """
+        A method that fetch the polygon boundaries based on the input polygon
+        
+        Args:
+            polygon (Polygon): [the input polygon]
+            
+        Returns:
+            [tuple]: [bounds and polygon exterior coordinates string]
+        """
         polygon_df = gpd.GeoDataFrame([polygon], columns=['geometry'])
 
         polygon_df.set_crs(epsg=4326, inplace=True)
@@ -50,7 +79,17 @@ class UsgsLidar:
         
         return f"({[minx, maxx]},{[miny,maxy]})", polygon_input
     
-    def read_csv(self, csv_path, missing_values=["n/a", "na", "undefined"]):
+    def read_csv(self, csv_path, missing_values=["n/a", "na", "undefined"]) -> pd.DataFrame:
+        """
+        A method to read a csv file
+        
+        Args:
+            csv_path (string): [the location of the csv file.]
+            missing_values(string, optional): [null expressions.]
+            
+        Returns:
+            [pandas.DataFrame]: [pandas dataframe]
+        """
         try:
             df = pd.read_csv(csv_path, na_values=missing_values)
             logging.info("read csv successfully!")
@@ -63,7 +102,17 @@ class UsgsLidar:
             print('File not found.')
             
             
-    def fetch_pipeline (self, region: str, polygon: Polygon):
+    def fetch_pipeline (self, region: str, polygon: Polygon) -> pdal.Pipeline:
+        """
+        A method to fill the empty values in the json pipeline and create pdal pipeline object
+        
+        Args:
+            region (str): [the filename of the region].
+            polygon: (Polygon): [the input polygon].
+            
+        Returns:
+            [pdal.pipeline]: [pdal pipeline object].     
+        """
         url = f"{self.path}{region}/ept.json"
         boundary, poly = self.fetch_polygon_boundaries(polygon)
         
@@ -75,7 +124,18 @@ class UsgsLidar:
         logging.info("loaded pipe successfully!")
         return pipeline
     
-    def execute_pipeline(self, polygon: Polygon, epsg=4326, region: str = "IA_FullState"):
+    def execute_pipeline(self, polygon: Polygon, epsg=4326, region: str = "IA_FullState") -> None:
+        """
+        A method to execute a pipeline and fetch data.
+        
+        Args:
+            polygon (Polygon): [A polygon object].
+            epsg (int, optional): [EPSG coordinate system] Default to 4326.
+            region (str, optional): [the filename of the region] Default to IA_FullState.
+        
+        Returns:
+            [None]: [nonetype object].
+        """
         
         pipeline = self.fetch_pipeline(region, polygon)
 
@@ -89,7 +149,17 @@ class UsgsLidar:
             print(e)
     
     
-    def create_gpd_df(self, epsg, pipe):
+    def create_gpd_df(self, epsg, pipe) -> gpd.GeoDataFrame:
+        """
+        A method to create geopandas dataframe from a pipeline object
+        
+        Args:
+            epsg (int, optional): [EPSG coordinate system].
+            pipe (pdal.Pipeline): [pipeline object].
+            
+        Returns:
+                [Geopandas.GeoDataFrame]: [a geopandas dataframe].
+        """    
         try:
             cloud = []
             elevations =[]
@@ -113,14 +183,31 @@ class UsgsLidar:
             logging.exception("failed to create geopandas")
             print(e)
 
-    def fetch_region_data(self, polygon: Polygon, epsg=4326):
-        pipeline = self.execute_pipeline(polygon, epsg)
+    def fetch_region_data(self, polygon: Polygon, epsg=4326) -> gpd.GeoDataFrame:
+        """
+        A method to fetch the data of a region.
         
+        Args:
+            polygon (polygon): [a polygon object].
+            epsg (int, optional): [EPSG coordinate system].
+            
+        Returns:
+            [Geopandas.GeoDataFrame]: [a geopandas dataframe].
+        """    
+        pipeline = self.execute_pipeline(polygon, epsg)
         logging.info("fetched region data successfully!")
                               
         return self.create_gpd_df(epsg, pipeline)
     
-    def read_txt(self, txt_path) -> list:
+    def read_txt(self, txt_path: str) -> list:
+        """
+        A method to read text file.
+        
+        Args:
+            txt_path (str): [path to the text file].
+        Returns:
+            [list]: [list of text files.]
+        """
         try:
             with open(txt_path, "r") as f:
                 text_file = f.read().splitlines()
@@ -133,7 +220,15 @@ class UsgsLidar:
             print(e)
             
     def fetch_name_and_year(self, location: str) -> tuple:
+        """
+        A method to fetch name and year from file name.
         
+        Args:
+            location (str): [location of file].
+        
+        Returns:
+            [tuple]: [tuple of name and year]
+        """
         location = location.replace('/', '')
         regex = '20[0-9][0-9]+'
         match = re.search(regex, location)
@@ -145,7 +240,13 @@ class UsgsLidar:
           return (location, None)
     
    
-    def fetch_metadata(self):
+    def fetch_metadata(self) -> pd.DataFrame:
+        """
+        A method to create metadata for EPT files available on AWS.
+        
+        Returns:
+            [pandas.DataFrame]: [dataframe of the metadata].
+        """
     
         metadata = pd.DataFrame(columns=['filename', 'region',
                           'year', 'xmin', 'xmax', 'ymin', 'ymax', 'points'])
@@ -174,6 +275,16 @@ class UsgsLidar:
     
     
     def fetch_regions(self, polygon: Polygon, epsg=4326) -> list:
+        """
+        A method to fetch region(s) within a polygon.
+        
+        Args:
+            polygon (Polygon): [a polygon object].
+            epsg (int, optional): [EPSG coordinate system].
+            
+        Returns:
+            [list]: [lists of regions within the polygon].
+        """
     
         polygon_df = gpd.GeoDataFrame([polygon], columns=['geometry'])
 
@@ -197,6 +308,16 @@ class UsgsLidar:
         return regions   
     
     def fetch_data(self, polygon: Polygon, region="IA_FullState") -> dict:
+        """
+        A method to fetch the data of a region.
+        
+        Args:
+            polygon (Polygon): [a polygon object].
+            region (str, optional): [the region where the data will be extracted from].
+            
+        Returns:
+            [dict]: [a dictionary object with year, geopandas dataframe pair].
+        """
         regions = self.fetch_regions(polygon)
 
         region_dicto = {}
@@ -216,8 +337,18 @@ class UsgsLidar:
         logging.info("fetched data successfully")
         return(region_dicto)
     
-    def plot_terrain(self, gdf: gpd.GeoDataFrame, fig_size: tuple=(12, 10), size: float=0.01):
-       
+    def plot_terrain(self, gdf: gpd.GeoDataFrame, fig_size: tuple=(12, 10), size: float=0.01) -> None:
+        """
+        A method to plot points in geopandas dataframe as a 3D scatter plot.
+        
+        Args:
+            gdf (GeoDataFrame): [a geopandas dataframe containing columns of elevation and geometry].
+            fig_size (tuple, optional): [filesze of the figure to be displayed]. Defaults to (12, 10)].
+            size (float, optional): [size of the points to be plotted]. Defaults to 0.01].
+        
+        Returns:
+            [None]: [nonetype object].
+        """
         fig, ax = plt.subplots(1, 1, figsize=fig_size)
         ax = plt.axes(projection='3d')
         ax.scatter(gdf.geometry.x, gdf.geometry.y, gdf.elevation, s=size)
@@ -225,7 +356,17 @@ class UsgsLidar:
         
         logging.info("plotted terrain successfully!")
                               
-    def save_heatmap(self, df, png_path, title) -> None:
+    def save_heatmap(self, df:gpd.GeoDataFrame, png_path:str, title:str) -> None:
+        """
+        A method to plot and save a heatmap.
+        
+        Args:
+            df (GeoDataFrame): [a geopandas dataframe containing columns of elevation and geometry].
+            png_path (str): [the path to save the heatmap as PNG].
+            title (str): [the tite  of the image].
+        Returns:
+            [None]: [nonetype object].
+        """
         fig, ax = plt.subplots(1, 1, figsize=(12, 10))
         df.plot(column='elevation', ax=ax, legend=True, cmap="terrain")
         plt.title(title)
@@ -237,7 +378,15 @@ class UsgsLidar:
         
         logging.info("saved hitmap successfully!")
         
-    def load_heatmap(self, png_path):
+    def load_heatmap(self, png_path:str) -> None:
+        """
+        A method to load a saved image.
+        
+        Arg:
+            png_path (str): [the path of the image to load].
+        Returns:
+            [None]: [nonetype object]
+        """
         fig, ax = plt.subplots(1, 1, figsize=(12, 10))
         img = mp.imread(png_path)
         imgplot = plt.imshow(img)
@@ -248,7 +397,7 @@ class UsgsLidar:
         
     def subsample(self, gdf: gpd.GeoDataFrame, res: int = 3) -> gpd.GeoDataFrame:
         """
-        Point cloud data sampler method that implements decimation and voxel grid sampling for reducing point cloud data density.
+        A method to sample a point cloud data by implementing a decimation and voxel grid sampling to reduce point cloud data density.
 
         Args:
             gdf (gpd.GeoDataFrame): [a geopandas dataframe containing columns of elevation and geometry.]
