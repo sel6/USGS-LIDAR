@@ -1,18 +1,16 @@
 # USGS-LIDAR
 
-**Table of Content**
+  - [Objective](#objective)
+  - [Data](#data)
+  - [Requirements](#requirements)
+  - [Tasks](#tasks)
+  - [Install](#install)
+  - [Docs](#docs)
+  - [Notebooks](#notebooks)
+  - [Scripts](#scripts)
 
-   -[objective](#objective)
  
-   -[Data](#data)
- 
-   -[Requirments](#requirments)
- 
-   -[Tasks](#tasks)
- 
-   -[Install](#install)
- 
-## Project Objective
+## Objective
 The task is to produce an easy to use, reliable and well designed python module that domain experts and data scientists can use to fetch, visualize, and transform publicly available satellite and LIDAR data. In particular, the code should interface with USGS 3DEP and fetch data using their API. 
 
 
@@ -43,3 +41,19 @@ The data can be found at amazon s3 bucket in https://s3-us-west-2.amazonaws.com/
 
 ### Install
 
+```
+git clone https://github.com/eandualem/PythonLidar
+cd PythonLidar
+pip install -r requirements.txt
+```
+### Docs
+
+Contains code documentation with description of classes and methods.
+
+### Notebooks
+
+Contains the demonstration of loading, fetching, visualising and transforming LIDAR data.
+
+### Scripts
+
+Contains the module for loading, fetching visualising and transforming LIDAR data
