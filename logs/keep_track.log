@@ -68,3 +68,163 @@ time: 2022-06-25 05:10:31,633, function: create_gpd_df, module: root, message: c
 
 time: 2022-06-25 05:10:31,728, function: fetch_data, module: root, message: fetched data successfully 
 
+time: 2022-06-25 05:15:42,293, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 05:16:46,661, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 05:16:57,293, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 05:19:30,476, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 05:20:05,789, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 05:21:59,694, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 05:22:09,223, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 05:25:06,135, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 05:37:29,317, function: read_txt, module: root, message: read text file successfully! 
+
+time: 2022-06-25 05:37:29,368, function: read_json, module: root, message: read json file successfully! 
+
+time: 2022-06-25 05:37:29,418, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 05:37:38,358, function: fetch_regions, module: root, message: fetched region successfully! 
+
+time: 2022-06-25 05:37:38,370, function: fetch_polygon_boundaries, module: root, message: successfully fetched polygon boundaries 
+
+time: 2022-06-25 05:37:38,370, function: fetch_pipeline, module: root, message: loaded pipe successfully! 
+
+time: 2022-06-25 05:39:06,448, function: execute_pipeline, module: root, message: pipeline executed successfully! 
+
+time: 2022-06-25 05:39:06,449, function: fetch_region_data, module: root, message: fetched region data successfully! 
+
+time: 2022-06-25 05:39:53,693, function: create_gpd_df, module: root, message: created geopandas dataframe successfully! 
+
+time: 2022-06-25 05:39:53,784, function: fetch_data, module: root, message: fetched data successfully 
+
+time: 2022-06-25 05:58:49,893, function: read_txt, module: root, message: read text file successfully! 
+
+time: 2022-06-25 05:58:49,958, function: read_json, module: root, message: read json file successfully! 
+
+time: 2022-06-25 05:58:50,074, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 05:59:11,659, function: fetch_regions, module: root, message: fetched region successfully! 
+
+time: 2022-06-25 05:59:11,675, function: fetch_polygon_boundaries, module: root, message: successfully fetched polygon boundaries 
+
+time: 2022-06-25 05:59:11,676, function: fetch_pipeline, module: root, message: loaded pipe successfully! 
+
+time: 2022-06-25 06:00:43,260, function: execute_pipeline, module: root, message: pipeline executed successfully! 
+
+time: 2022-06-25 06:00:43,260, function: fetch_region_data, module: root, message: fetched region data successfully! 
+
+time: 2022-06-25 06:01:35,542, function: create_gpd_df, module: root, message: created geopandas dataframe successfully! 
+
+time: 2022-06-25 06:01:35,986, function: fetch_data, module: root, message: fetched data successfully 
+
+time: 2022-06-25 06:11:38,339, function: read_txt, module: root, message: read text file successfully! 
+
+time: 2022-06-25 06:11:38,379, function: read_json, module: root, message: read json file successfully! 
+
+time: 2022-06-25 06:11:38,664, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 06:12:19,375, function: fetch_regions, module: root, message: fetched region successfully! 
+
+time: 2022-06-25 06:12:19,401, function: fetch_polygon_boundaries, module: root, message: successfully fetched polygon boundaries 
+
+time: 2022-06-25 06:12:19,402, function: fetch_pipeline, module: root, message: loaded pipe successfully! 
+
+time: 2022-06-25 06:13:40,867, function: execute_pipeline, module: root, message: pipeline executed successfully! 
+
+time: 2022-06-25 06:13:40,867, function: fetch_region_data, module: root, message: fetched region data successfully! 
+
+time: 2022-06-25 06:14:27,212, function: create_gpd_df, module: root, message: created geopandas dataframe successfully! 
+
+time: 2022-06-25 06:14:27,332, function: fetch_data, module: root, message: fetched data successfully 
+
+time: 2022-06-25 06:36:25,503, function: save_heatmap, module: root, message: saved hitmap successfully! 
+
+time: 2022-06-25 06:36:26,032, function: load_heatmap, module: root, message: loaded hitmap successfully! 
+
+time: 2022-06-25 06:40:51,737, function: read_txt, module: root, message: read text file successfully! 
+
+time: 2022-06-25 06:40:51,738, function: read_json, module: root, message: read json file successfully! 
+
+time: 2022-06-25 06:40:51,791, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 06:46:45,291, function: save_heatmap, module: root, message: saved hitmap successfully! 
+
+time: 2022-06-25 06:46:51,487, function: save_heatmap, module: root, message: saved hitmap successfully! 
+
+time: 2022-06-25 06:46:51,898, function: load_heatmap, module: root, message: loaded hitmap successfully! 
+
+time: 2022-06-25 06:47:17,528, function: load_heatmap, module: root, message: loaded hitmap successfully! 
+
+time: 2022-06-25 07:22:17,011, function: plot_terrain, module: root, message: plotted terrain successfully! 
+
+time: 2022-06-25 07:25:13,283, function: plot_terrain, module: root, message: plotted terrain successfully! 
+
+time: 2022-06-25 07:30:45,085, function: read_txt, module: root, message: read text file successfully! 
+
+time: 2022-06-25 07:30:45,102, function: read_json, module: root, message: read json file successfully! 
+
+time: 2022-06-25 07:30:45,137, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 07:30:51,659, function: fetch_regions, module: root, message: fetched region successfully! 
+
+time: 2022-06-25 07:30:51,679, function: fetch_polygon_boundaries, module: root, message: successfully fetched polygon boundaries 
+
+time: 2022-06-25 07:30:51,680, function: fetch_pipeline, module: root, message: loaded pipe successfully! 
+
+time: 2022-06-25 07:32:27,892, function: execute_pipeline, module: root, message: pipeline executed successfully! 
+
+time: 2022-06-25 07:32:27,892, function: fetch_region_data, module: root, message: fetched region data successfully! 
+
+time: 2022-06-25 07:33:15,922, function: create_gpd_df, module: root, message: created geopandas dataframe successfully! 
+
+time: 2022-06-25 07:33:16,013, function: fetch_data, module: root, message: fetched data successfully 
+
+time: 2022-06-25 07:42:38,775, function: plot_terrain, module: root, message: plotted terrain successfully! 
+
+time: 2022-06-25 07:46:20,977, function: save_heatmap, module: root, message: saved hitmap successfully! 
+
+time: 2022-06-25 07:46:21,447, function: load_heatmap, module: root, message: loaded hitmap successfully! 
+
+time: 2022-06-25 07:53:56,250, function: plot_terrain, module: root, message: plotted terrain successfully! 
+
+time: 2022-06-25 07:54:54,414, function: read_txt, module: root, message: read text file successfully! 
+
+time: 2022-06-25 07:54:54,431, function: read_json, module: root, message: read json file successfully! 
+
+time: 2022-06-25 07:54:54,464, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 07:55:20,257, function: read_txt, module: root, message: read text file successfully! 
+
+time: 2022-06-25 07:55:20,259, function: read_json, module: root, message: read json file successfully! 
+
+time: 2022-06-25 07:55:20,279, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 07:55:23,288, function: fetch_regions, module: root, message: fetched region successfully! 
+
+time: 2022-06-25 07:55:23,307, function: fetch_polygon_boundaries, module: root, message: successfully fetched polygon boundaries 
+
+time: 2022-06-25 07:55:23,308, function: fetch_pipeline, module: root, message: loaded pipe successfully! 
+
+time: 2022-06-25 07:56:59,998, function: execute_pipeline, module: root, message: pipeline executed successfully! 
+
+time: 2022-06-25 07:56:59,999, function: fetch_region_data, module: root, message: fetched region data successfully! 
+
+time: 2022-06-25 07:57:47,697, function: create_gpd_df, module: root, message: created geopandas dataframe successfully! 
+
+time: 2022-06-25 07:57:47,790, function: fetch_data, module: root, message: fetched data successfully 
+
+time: 2022-06-25 08:03:51,612, function: plot_terrain, module: root, message: plotted terrain successfully! 
+
+time: 2022-06-25 08:05:31,004, function: plot_terrain, module: root, message: plotted terrain successfully! 
+
+time: 2022-06-25 08:05:58,414, function: save_heatmap, module: root, message: saved hitmap successfully! 
+
+time: 2022-06-25 08:05:58,947, function: load_heatmap, module: root, message: loaded hitmap successfully! 
+
