@@ -283,7 +283,7 @@ class UsgsLidar:
         df_subsampled['elevation'] = sub_sampled[:, 2]
         df_subsampled['geometry'] = geometry
         
-        logger.info("subsampled cloud data successfully!")
+        logging.info("subsampled cloud data successfully!")
         
         return df_subsampled
     
@@ -305,11 +305,11 @@ class UsgsLidar:
             df[column] = df[column].to_crs(epsg_out)
             df = df.set_crs(epsg_out)
             
-            logger.info("successfully converted epsg format")
+            logging.info("successfully converted epsg format")
             
             return df
         except Exception as e:
-            logger.exception(e)
+            logging.exception(e)
                               
 if __name__=="__main__":
     US = UsgsLidar()
