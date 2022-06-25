@@ -245,6 +245,45 @@ class UsgsLidar:
         plt.show() 
         
         logging.info("loaded hitmap successfully!")
+        
+    def subsample(self, gdf: gpd.GeoDataFrame, res: int = 3) -> gpd.GeoDataFrame:
+        """
+        Point cloud data sampler method that implements decimation and voxel grid sampling for reducing point cloud data density.
+
+        Args:
+            gdf (gpd.GeoDataFrame): [a geopandas dataframe containing columns of elevation and geometry.]
+            res (int, optional): [resolution]. Defaults to 3.
+
+        Returns:
+            [Geopandas.GeoDataFrame]: [a geopandas dataframe]
+        """
+
+        points = np.vstack((gdf.geometry.x, gdf.geometry.y, gdf.elevation)).transpose()
+
+        voxel_size=res
+
+        non_empty_voxel_keys, inverse, nb_pts_per_voxel = np.unique(((points - np.min(points, axis=0)) // voxel_size).astype(int), axis=0, return_inverse=True, return_counts=True)
+        idx_pts_vox_sorted=np.argsort(inverse)
+
+        voxel_grid={}
+        grid_barycenter=[]
+        last_seen=0
+
+        for idx,vox in enumerate(non_empty_voxel_keys):
+            voxel_grid[tuple(vox)]= points[idx_pts_vox_sorted[
+            last_seen:last_seen+nb_pts_per_voxel[idx]]]
+            grid_barycenter.append(np.mean(voxel_grid[tuple(vox)],axis=0))
+            last_seen+=nb_pts_per_voxel[idx]
+
+        sub_sampled =  np.array(grid_barycenter)
+        df_subsampled = gpd.GeoDataFrame(columns=["elevation", "geometry"])
+
+        geometry = [Point(x, y) for x, y in zip( sub_sampled[:, 0],  sub_sampled[:, 1])]
+
+        df_subsampled['elevation'] = sub_sampled[:, 2]
+        df_subsampled['geometry'] = geometry
+
+        return df_subsampled
                               
 if __name__=="__main__":
     US = UsgsLidar()
