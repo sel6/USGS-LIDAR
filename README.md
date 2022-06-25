@@ -42,7 +42,7 @@ The data can be found at amazon s3 bucket in https://s3-us-west-2.amazonaws.com/
 ### Install
 
 ```
-git clone https://github.com/eandualem/PythonLidar
+git clone https://github.com/sel6/USGS-LIDAR
 cd PythonLidar
 pip install -r requirements.txt
 ```
