@@ -20,8 +20,10 @@ class UsgsLidar:
         
         """
         Args:
-            path (str, optional): url path location of the Lidar data. Defaults to "https://s3-us-west-2.amazonaws.com/usgs-lidar-public/"
-            pipeline_json_path (str, optional): the json file with the pipeline structure. Defaults to "../pipeline.json".
+            path (str, optional): url path location of the Lidar data. 
+		Defaults to "https://s3-us-west-2.amazonaws.com/usgs-lidar-public/"
+            pipeline_json_path (str, optional): the json file with the pipeline structure. 
+		Defaults to "../pipeline.json".
             
         Returns:
             [None]: nonetype object.
