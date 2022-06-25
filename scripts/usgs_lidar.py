@@ -282,8 +282,34 @@ class UsgsLidar:
 
         df_subsampled['elevation'] = sub_sampled[:, 2]
         df_subsampled['geometry'] = geometry
-
+        
+        logger.info("subsampled cloud data successfully!")
+        
         return df_subsampled
+    
+    def convert_epsg(self, df: gpd.GeoDataFrame, column: str, epsg_inp = 4326, epsg_out = 3857) -> gpd.GeoDataFrame:
+        """
+        A method that converts EPSG coordinate system
+
+        Args:
+            df (gpd.GeoDataFrame): [a geopandas dataframe containing columns of elevation and geometry.]
+            column (str): [the column geometry.]
+            epsg_inp (int): [the current geometry EPSG type.]
+            epsg_out (int): [EPSG type the geometry will be converted to.]
+
+        Returns:
+                [Geopandas.GeoDataFrame]: [a geopandas dataframe]    
+        """
+        try:
+            df = df.set_crs(epsg_inp)
+            df[column] = df[column].to_crs(epsg_out)
+            df = df.set_crs(epsg_out)
+            
+            logger.info("successfully converted epsg format")
+            
+            return df
+        except Exception as e:
+            logger.exception(e)
                               
 if __name__=="__main__":
     US = UsgsLidar()
