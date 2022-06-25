@@ -20,11 +20,11 @@ class UsgsLidar:
         
         """
         Args:
-            path (str, optional): [url path location of the Lidar data]. Defaults to "https://s3-us-west-2.amazonaws.com/usgs-lidar-public/"
-            pipeline_json_path (str, optional): [the json file with the pipeline structure]. Defaults to "../pipeline.json".
+            path (str, optional): url path location of the Lidar data. Defaults to "https://s3-us-west-2.amazonaws.com/usgs-lidar-public/"
+            pipeline_json_path (str, optional): the json file with the pipeline structure. Defaults to "../pipeline.json".
             
         Returns:
-            [None]: [nonetype object].
+            [None]: nonetype object.
         """
             
         
@@ -40,7 +40,7 @@ class UsgsLidar:
         A method to read a json file
         
         Args:
-            json_path (str): [the location of the json file].
+            json_path (str): the location of the json file.
         """
         
         try:
@@ -57,10 +57,10 @@ class UsgsLidar:
         A method that fetch the polygon boundaries based on the input polygon
         
         Args:
-            polygon (Polygon): [the input polygon]
+            polygon (Polygon): the input polygon
             
         Returns:
-            [tuple]: [bounds and polygon exterior coordinates string]
+            [tuple]: bounds and polygon exterior coordinates string.
         """
         polygon_df = gpd.GeoDataFrame([polygon], columns=['geometry'])
 
@@ -84,11 +84,11 @@ class UsgsLidar:
         A method to read a csv file
         
         Args:
-            csv_path (string): [the location of the csv file.]
-            missing_values(string, optional): [null expressions.]
+            csv_path (string): the location of the csv file.
+            missing_values(string, optional): null expressions.
             
         Returns:
-            [pandas.DataFrame]: [pandas dataframe]
+            [pandas.DataFrame]: pandas dataframe
         """
         try:
             df = pd.read_csv(csv_path, na_values=missing_values)
@@ -107,11 +107,11 @@ class UsgsLidar:
         A method to fill the empty values in the json pipeline and create pdal pipeline object
         
         Args:
-            region (str): [the filename of the region].
-            polygon: (Polygon): [the input polygon].
+            region (str): the filename of the region.
+            polygon: (Polygon): the input polygon.
             
         Returns:
-            [pdal.pipeline]: [pdal pipeline object].     
+            [pdal.pipeline]: pdal pipeline object.     
         """
         url = f"{self.path}{region}/ept.json"
         boundary, poly = self.fetch_polygon_boundaries(polygon)
@@ -129,12 +129,12 @@ class UsgsLidar:
         A method to execute a pipeline and fetch data.
         
         Args:
-            polygon (Polygon): [A polygon object].
-            epsg (int, optional): [EPSG coordinate system] Default to 4326.
-            region (str, optional): [the filename of the region] Default to IA_FullState.
+            polygon (Polygon): A polygon object.
+            epsg (int, optional): EPSG coordinate system. Default to 4326.
+            region (str, optional): the filename of the region. Default to IA_FullState.
         
         Returns:
-            [None]: [nonetype object].
+            [None]: nonetype object.
         """
         
         pipeline = self.fetch_pipeline(region, polygon)
@@ -154,11 +154,11 @@ class UsgsLidar:
         A method to create geopandas dataframe from a pipeline object
         
         Args:
-            epsg (int, optional): [EPSG coordinate system].
-            pipe (pdal.Pipeline): [pipeline object].
+            epsg (int, optional): EPSG coordinate system.
+            pipe (pdal.Pipeline): pipeline object.
             
         Returns:
-                [Geopandas.GeoDataFrame]: [a geopandas dataframe].
+                [Geopandas.GeoDataFrame]: a geopandas dataframe.
         """    
         try:
             cloud = []
@@ -188,11 +188,11 @@ class UsgsLidar:
         A method to fetch the data of a region.
         
         Args:
-            polygon (polygon): [a polygon object].
-            epsg (int, optional): [EPSG coordinate system].
+            polygon (polygon): a polygon object.
+            epsg (int, optional): EPSG coordinate system.
             
         Returns:
-            [Geopandas.GeoDataFrame]: [a geopandas dataframe].
+            [Geopandas.GeoDataFrame]: a geopandas dataframe.
         """    
         pipeline = self.execute_pipeline(polygon, epsg)
         logging.info("fetched region data successfully!")
@@ -204,9 +204,9 @@ class UsgsLidar:
         A method to read text file.
         
         Args:
-            txt_path (str): [path to the text file].
+            txt_path (str): path to the text file.
         Returns:
-            [list]: [list of text files.]
+            [list]: list of text files.
         """
         try:
             with open(txt_path, "r") as f:
@@ -224,10 +224,10 @@ class UsgsLidar:
         A method to fetch name and year from file name.
         
         Args:
-            location (str): [location of file].
+            location (str): location of file.
         
         Returns:
-            [tuple]: [tuple of name and year]
+            [tuple]: tuple of name and year.
         """
         location = location.replace('/', '')
         regex = '20[0-9][0-9]+'
@@ -245,7 +245,7 @@ class UsgsLidar:
         A method to create metadata for EPT files available on AWS.
         
         Returns:
-            [pandas.DataFrame]: [dataframe of the metadata].
+            [pandas.DataFrame]: dataframe of the metadata.
         """
     
         metadata = pd.DataFrame(columns=['filename', 'region',
@@ -279,11 +279,11 @@ class UsgsLidar:
         A method to fetch region(s) within a polygon.
         
         Args:
-            polygon (Polygon): [a polygon object].
-            epsg (int, optional): [EPSG coordinate system].
+            polygon (Polygon): a polygon object.
+            epsg (int, optional): EPSG coordinate system.
             
         Returns:
-            [list]: [lists of regions within the polygon].
+            [list]: lists of regions within the polygon.
         """
     
         polygon_df = gpd.GeoDataFrame([polygon], columns=['geometry'])
@@ -312,11 +312,11 @@ class UsgsLidar:
         A method to fetch the data of a region.
         
         Args:
-            polygon (Polygon): [a polygon object].
-            region (str, optional): [the region where the data will be extracted from].
+            polygon (Polygon): a polygon object.
+            region (str, optional): the region where the data will be extracted from.
             
         Returns:
-            [dict]: [a dictionary object with year, geopandas dataframe pair].
+            [dict]: a dictionary object with year, geopandas dataframe pair.
         """
         regions = self.fetch_regions(polygon)
 
@@ -342,12 +342,12 @@ class UsgsLidar:
         A method to plot points in geopandas dataframe as a 3D scatter plot.
         
         Args:
-            gdf (GeoDataFrame): [a geopandas dataframe containing columns of elevation and geometry].
-            fig_size (tuple, optional): [filesze of the figure to be displayed]. Defaults to (12, 10)].
-            size (float, optional): [size of the points to be plotted]. Defaults to 0.01].
+            gdf (GeoDataFrame): a geopandas dataframe containing columns of elevation and geometry.
+            fig_size (tuple, optional): filesze of the figure to be displayed. Defaults to (12, 10).
+            size (float, optional): size of the points to be plotted. Defaults to 0.01.
         
         Returns:
-            [None]: [nonetype object].
+            [None]: nonetype object.
         """
         fig, ax = plt.subplots(1, 1, figsize=fig_size)
         ax = plt.axes(projection='3d')
@@ -361,11 +361,11 @@ class UsgsLidar:
         A method to plot and save a heatmap.
         
         Args:
-            df (GeoDataFrame): [a geopandas dataframe containing columns of elevation and geometry].
-            png_path (str): [the path to save the heatmap as PNG].
-            title (str): [the tite  of the image].
+            df (GeoDataFrame): a geopandas dataframe containing columns of elevation and geometry.
+            png_path (str): the path to save the heatmap as PNG.
+            title (str): the tite  of the image.
         Returns:
-            [None]: [nonetype object].
+            [None]: nonetype object.
         """
         fig, ax = plt.subplots(1, 1, figsize=(12, 10))
         df.plot(column='elevation', ax=ax, legend=True, cmap="terrain")
@@ -383,9 +383,9 @@ class UsgsLidar:
         A method to load a saved image.
         
         Arg:
-            png_path (str): [the path of the image to load].
+            png_path (str): the path of the image to load.
         Returns:
-            [None]: [nonetype object]
+            [None]: nonetype object.
         """
         fig, ax = plt.subplots(1, 1, figsize=(12, 10))
         img = mp.imread(png_path)
@@ -400,11 +400,11 @@ class UsgsLidar:
         A method to sample a point cloud data by implementing a decimation and voxel grid sampling to reduce point cloud data density.
 
         Args:
-            gdf (gpd.GeoDataFrame): [a geopandas dataframe containing columns of elevation and geometry.]
-            res (int, optional): [resolution]. Defaults to 3.
+            gdf (gpd.GeoDataFrame): a geopandas dataframe containing columns of elevation and geometry.
+            res (int, optional): resolution. Defaults to 3.
 
         Returns:
-            [Geopandas.GeoDataFrame]: [a geopandas dataframe]
+            [Geopandas.GeoDataFrame]: a geopandas dataframe.
         """
 
         points = np.vstack((gdf.geometry.x, gdf.geometry.y, gdf.elevation)).transpose()
@@ -441,13 +441,13 @@ class UsgsLidar:
         A method that converts EPSG coordinate system
 
         Args:
-            df (gpd.GeoDataFrame): [a geopandas dataframe containing columns of elevation and geometry.]
-            column (str): [the column geometry.]
-            epsg_inp (int): [the current geometry EPSG type.]
-            epsg_out (int): [EPSG type the geometry will be converted to.]
+            df (gpd.GeoDataFrame): a geopandas dataframe containing columns of elevation and geometry.
+            column (str): the column geometry.
+            epsg_inp (int): the current geometry EPSG type.
+            epsg_out (int): EPSG type the geometry will be converted to.
 
         Returns:
-                [Geopandas.GeoDataFrame]: [a geopandas dataframe]    
+                [Geopandas.GeoDataFrame]: a geopandas dataframe.    
         """
         try:
             df = df.set_crs(epsg_inp)
