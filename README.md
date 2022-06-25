@@ -18,6 +18,20 @@ The task is to produce an easy to use, reliable and well designed python module 
 
 The data can be found at amazon s3 bucket in https://s3-us-west-2.amazonaws.com/usgs-lidar-public.
 
+## Requirments
+
+```
+pandas
+numpy
+geopandas
+shapely
+pdal
+matplotlib
+pyproj
+packaging
+fiona
+ ```
+ 
 ## Tasks
 
 * Data Fetching and Loading:
