@@ -46,6 +46,11 @@ git clone https://github.com/eandualem/PythonLidar
 cd PythonLidar
 pip install -r requirements.txt
 ```
+or
+
+```
+pip install -i https://test.pypi.org/simple/ usgs3lidar==0.0.1
+```
 ### Docs
 
 Contains code documentation with description of classes and methods.
