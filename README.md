@@ -1,4 +1,12 @@
 # USGS-LIDAR
+
+**Table of Content**
+ -[Project Objective](#project Objective)
+ -[Data](#data)
+ -[Requirments](#requirments)
+ -[Tasks](#tasks)
+ -[Install](#install)
+ 
 ## Project Objective
 The task is to produce an easy to use, reliable and well designed python module that domain experts and data scientists can use to fetch, visualize, and transform publicly available satellite and LIDAR data. In particular, the code should interface with USGS 3DEP and fetch data using their API. 
 
@@ -8,10 +16,6 @@ The task is to produce an easy to use, reliable and well designed python module 
 The data can be found at amazon s3 bucket in https://s3-us-west-2.amazonaws.com/usgs-lidar-public.
 
 ## Tasks
-
-* Create Github repo
-* Create project, issues, Readme.md and structure folders
-* Understand key concepts of Data Engineering, LIDAR, geopandas, pdal… etc.
 
 * Data Fetching and Loading:
   * Write a python code that receives Field boundary polygon in geopandas dataframes as input and outputs a Python dictionary with all years of data           available and geopandas grid point file with elevations encoded in the requested CRS.
@@ -31,4 +35,6 @@ The data can be found at amazon s3 bucket in https://s3-us-west-2.amazonaws.com/
 
      * An interpolated grid of points with interpolated elevation information
      * An option to visualize the output grid as a 3D render or heatmap to visually compare to the original, un-interpolated elevation data.
+
+### Install
 
