@@ -350,3 +350,43 @@ time: 2022-06-25 09:06:54,514, function: save_heatmap, module: root, message: sa
 
 time: 2022-06-25 09:06:54,994, function: load_heatmap, module: root, message: loaded hitmap successfully! 
 
+time: 2022-06-25 10:50:30,824, function: read_txt, module: root, message: read text file successfully! 
+
+time: 2022-06-25 10:50:30,941, function: read_json, module: root, message: read json file successfully! 
+
+time: 2022-06-25 10:50:31,032, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 10:50:39,547, function: fetch_polygon_boundaries, module: root, message: successfully fetched polygon boundaries 
+
+time: 2022-06-25 10:50:44,856, function: fetch_regions, module: root, message: fetched region successfully! 
+
+time: 2022-06-25 10:50:50,288, function: fetch_regions, module: root, message: fetched region successfully! 
+
+time: 2022-06-25 10:50:50,308, function: fetch_polygon_boundaries, module: root, message: successfully fetched polygon boundaries 
+
+time: 2022-06-25 10:50:50,309, function: fetch_pipeline, module: root, message: loaded pipe successfully! 
+
+time: 2022-06-25 10:52:52,052, function: execute_pipeline, module: root, message: pipeline executed successfully! 
+
+time: 2022-06-25 10:52:52,052, function: fetch_region_data, module: root, message: fetched region data successfully! 
+
+time: 2022-06-25 10:53:12,594, function: create_gpd_df, module: root, message: created geopandas dataframe successfully! 
+
+time: 2022-06-25 10:53:12,640, function: fetch_data, module: root, message: fetched data successfully 
+
+time: 2022-06-25 10:53:46,163, function: plot_terrain, module: root, message: plotted terrain successfully! 
+
+time: 2022-06-25 10:54:55,125, function: save_heatmap, module: root, message: saved hitmap successfully! 
+
+time: 2022-06-25 10:54:55,649, function: load_heatmap, module: root, message: loaded hitmap successfully! 
+
+time: 2022-06-25 10:55:41,484, function: convert_epsg, module: root, message: successfully converted epsg format 
+
+time: 2022-06-25 10:56:15,631, function: subsample, module: root, message: subsampled cloud data successfully! 
+
+time: 2022-06-25 10:56:29,411, function: plot_terrain, module: root, message: plotted terrain successfully! 
+
+time: 2022-06-25 10:56:44,552, function: save_heatmap, module: root, message: saved hitmap successfully! 
+
+time: 2022-06-25 10:56:45,032, function: load_heatmap, module: root, message: loaded hitmap successfully! 
+
