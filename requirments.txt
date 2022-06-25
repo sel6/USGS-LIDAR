@@ -1,0 +1,8 @@
+matplotlib
+python>=3.9
+shapely
+pandas
+numpy
+pyproj
+geopandas
+pdal
