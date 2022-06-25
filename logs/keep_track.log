@@ -16,3 +16,21 @@ time: 2022-06-24 21:50:17,109, function: read_csv, module: root, message: read c
 
 time: 2022-06-24 21:50:57,415, function: fetch_regions, module: root, message: fetched region successfully! 
 
+time: 2022-06-25 04:43:50,583, function: read_txt, module: root, message: read text file successfully! 
+
+time: 2022-06-25 04:43:50,634, function: read_json, module: root, message: read json file successfully! 
+
+time: 2022-06-25 04:43:50,772, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 04:44:26,317, function: read_txt, module: root, message: read text file successfully! 
+
+time: 2022-06-25 04:44:26,317, function: read_json, module: root, message: read json file successfully! 
+
+time: 2022-06-25 04:44:26,330, function: read_csv, module: root, message: read csv successfully! 
+
+time: 2022-06-25 04:44:26,741, function: fetch_polygon_boundaries, module: root, message: successfully fetched polygon boundaries 
+
+time: 2022-06-25 04:44:30,781, function: fetch_regions, module: root, message: fetched region successfully! 
+
+time: 2022-06-25 04:44:50,207, function: load_heatmap, module: root, message: loaded hitmap successfully! 
+
