@@ -57,7 +57,7 @@ fiona
 
 ```
 git clone https://github.com/sel6/USGS-LIDAR
-cd PythonLidar
+cd USGS-LIDAR
 pip install -r requirements.txt
 ```
 or
