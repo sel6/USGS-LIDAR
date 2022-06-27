@@ -67,7 +67,8 @@ pip install -i https://test.pypi.org/simple/ usgs3lidar==0.0.1
 ```
 ### Docs
 
-Contains code documentation with description of classes and methods.
+Contains code documentation with description of classes and methods. 
+Live deployment of the documentation can be found in https://amaranth-fan-96.tiiny.site/
 
 ### Notebooks
 
