@@ -13,7 +13,7 @@ class TestFiles(unittest.TestCase):
     self.helper = US()
 
   def test_read_csv(self):
-    df = US..read_csv('test.csv')
+    df = US.read_csv('test.csv')
     df1 = pd.read_csv('test.csv')
     self.assertEqual(df.shape, df1.shape)
     
